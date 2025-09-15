@@ -1,17 +1,44 @@
 ---
 import Section from "./Section.astro";
 import type { EducationProps } from "@types";
+import { Image } from "astro:assets";
+
+import unirLogo from "@assets/education/unir.png";
+import eciLogo from "@assets/education/eci.png";
+import senaLogo from "@assets/education/sena.svg";
+import googleLogo from "@assets/education/google.webp";
+import metaLogo from "@assets/education/meta.png";
+import uciLogo from "@assets/education/uci.webp";
+import deeplearningaiLogo from "@assets/education/deeplearningai.png";
+import harvardxLogo from "@assets/education/harvardx.png";
 
 interface Props {
-  education: EducationProps[];
+  education: Omit<EducationProps, "logo">[];
 }
 
 const { education } = Astro.props;
+
+const logos = [
+  unirLogo,
+  eciLogo,
+  senaLogo,
+  googleLogo,
+  googleLogo, // Google is repeated
+  metaLogo,
+  uciLogo,
+  deeplearningaiLogo,
+  harvardxLogo,
+];
+
+const educationWithLogos = education.map((item, index) => ({
+  ...item,
+  logo: logos[index],
+}));
 ---
 
 <Section text="Education" href="education">
   {
-    education.map(
+    educationWithLogos.map(
       (
         {
           institution,
@@ -37,14 +64,12 @@ const { education } = Astro.props;
               transition:animate="slide"
               class="w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-white flex items-center justify-center p-2"
             >
-              <img
-                class={`${
-                  logo.endsWith(".svg")
-                    ? "w-20 h-20"
-                    : "w-full h-full object-contain"
-                }`}
+              <Image
+                class="w-full h-full object-contain"
                 src={logo}
                 alt={institution}
+                width="80"
+                height="80"
               />
             </div>
             <div class="flex-1">
@@ -67,8 +92,7 @@ const { education } = Astro.props;
                             target="_blank"
                             rel="noopener noreferrer"
                             class="hover:text-primary inline-block after:relative after:bottom-[-4px] after:content-[url(/external.svg)]"
-                          >
-                          </a>
+                          ></a>
                         </span>
                       </>
                     ) : null}
@@ -108,7 +132,10 @@ const { education } = Astro.props;
             <div class="mb-4">
               <p class="text-lg font-bold text-white mb-2">
                 {"Dissertation Title: ".split(" ").map((word, wIndex) => (
-                  <span class="cascade-word" style={`--i: ${pIndex * 10 + wIndex};`}>
+                  <span
+                    class="cascade-word"
+                    style={`--i: ${pIndex * 10 + wIndex};`}
+                  >
                     {word}&nbsp;
                   </span>
                 ))}
@@ -148,7 +175,10 @@ const { education } = Astro.props;
             <div>
               <h5 class="text-lg font-medium text-white mb-2">
                 {"Courses".split(" ").map((word, wIndex) => (
-                  <span class="cascade-word" style={`--i: ${pIndex * 10 + wIndex};`}>
+                  <span
+                    class="cascade-word"
+                    style={`--i: ${pIndex * 10 + wIndex};`}
+                  >
                     {word}&nbsp;
                   </span>
                 ))}

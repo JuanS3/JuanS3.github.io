@@ -1,29 +1,61 @@
 ---
 import Section from "./Section.astro";
 import type { ExperienceProps } from "@types";
+import { Image } from "astro:assets";
+
+import monokeraLogo from "@assets/experience/monokera.jpeg";
+import interLogo from "@assets/experience/inter.jpg";
+import dentsuLogo from "@assets/experience/dentsu.jpeg";
+import havasLogo from "@assets/experience/havas-media.jpg";
+import klymLogo from "@assets/experience/klym.jpg";
+import nttDataLogo from "@assets/experience/ntt-data.jpg";
+import uzacatecasLogo from "@assets/experience/uzacatecas.jpg";
+import rollupLogo from "@assets/experience/rollup-consulting.jpg";
 
 interface Props {
-  experience: ExperienceProps[];
+  experience: Omit<ExperienceProps, "logo">[];
 }
 
 const { experience } = Astro.props;
+
+const logos = [
+  monokeraLogo,
+  interLogo,
+  dentsuLogo,
+  havasLogo,
+  klymLogo,
+  nttDataLogo,
+  uzacatecasLogo,
+  rollupLogo,
+  rollupLogo, // Rollup is repeated
+];
+
+const experienceWithLogos = experience.map((item, index) => ({
+  ...item,
+  logo: logos[index],
+}));
 ---
 
 <Section text="Work Experience" href="experience">
   {
-    experience.map(
-      ({ company, position, startDate, endDate, summary, stack, logo }, pIndex) => (
+    experienceWithLogos.map(
+      (
+        { company, position, startDate, endDate, summary, stack, logo },
+        pIndex,
+      ) => (
         <>
           <span class="relative flex justify-center mb-5">
             <div class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75" />
           </span>
           <div class="mb-10">
             <div class="flex gap-5">
-              <img
+              <Image
                 transition:animate="slide"
                 class="w-24 h-24 object-cover rounded-lg flex-shrink-0"
                 src={logo}
                 alt={company}
+                width="96"
+                height="96"
               />
               <div>
                 <h3
@@ -47,7 +79,9 @@ const { experience } = Astro.props;
                     )) || (
                       /* if position has only one word */
                       <>
-                        <span class="text-rose-500">{position.slice(0, 3)}</span>
+                        <span class="text-rose-500">
+                          {position.slice(0, 3)}
+                        </span>
                         {position.slice(3)}
                       </>
                     )}
@@ -100,7 +134,10 @@ const { experience } = Astro.props;
             ) : (
               <p class="text-base text-neutral">
                 {summary.split(" ").map((word, wIndex) => (
-                  <span class="cascade-word" style={`--i: ${pIndex * 10 + wIndex};`}>
+                  <span
+                    class="cascade-word"
+                    style={`--i: ${pIndex * 10 + wIndex};`}
+                  >
                     {word}&nbsp;
                   </span>
                 ))}

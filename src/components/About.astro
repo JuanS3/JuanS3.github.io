@@ -2,24 +2,30 @@
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
 import type { AboutProps, HeroProps } from "@types";
+import aboutImage from "@assets/me/me.webp";
 
-type Props = AboutProps & Pick<HeroProps, "name">;
+type Props = Omit<AboutProps, "image"> & Pick<HeroProps, "name">;
 
-const { description, image, name, email } = Astro.props;
+const { description, name, email } = Astro.props;
 ---
 
 <Section text="About Me" href="about">
   <div class="flex gap-12 md:gap-8 flex-col items-center md:flex-row">
     <p class="text-neutral w-auto text-base md:pr-5">
-      {description.map((paragraph, pIndex) => (
-        <span class="block mb-4">
-          {paragraph.split(" ").map((word, wIndex) => (
-            <span class="cascade-word" style={`--i: ${pIndex * 10 + wIndex};`}>
-              {word}&nbsp;
-            </span>
-          ))}
-        </span>
-      ))}
+      {
+        description.map((paragraph, pIndex) => (
+          <span class="block mb-4">
+            {paragraph.split(" ").map((word, wIndex) => (
+              <span
+                class="cascade-word"
+                style={`--i: ${pIndex * 10 + wIndex};`}
+              >
+                {word}&nbsp;
+              </span>
+            ))}
+          </span>
+        ))
+      }
     </p>
     <div
       transition:animate="slide"
@@ -27,7 +33,7 @@ const { description, image, name, email } = Astro.props;
     >
       <Image
         class="object-cover"
-        src={image}
+        src={aboutImage}
         width="260"
         height="260"
         alt={name}

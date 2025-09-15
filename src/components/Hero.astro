@@ -29,20 +29,21 @@ const [specialty_fisrt, specialty_second] = specialty.split("&");
   </p>
 
   <p class="text-neutral font-normal text-base md:text-lg mb-16">
-    {summary.map((paragraph, pIndex) => (
-      <span class="block mb-4">
-        {paragraph.split(" ").map((word, wIndex) => (
-          <span class="cascade-word" style={`--i: ${pIndex * 10 + wIndex};`}>
-            {word}&nbsp;
-          </span>
-        ))}
-      </span>
-    ))}
+    {
+      summary.map((paragraph, pIndex) => (
+        <span class="block mb-4">
+          {paragraph.split(" ").map((word, wIndex) => (
+            <span class="cascade-word" style={`--i: ${pIndex * 10 + wIndex};`}>
+              {word}&nbsp;
+            </span>
+          ))}
+        </span>
+      ))
+    }
   </p>
 
   <a
     class="text-sm py-5 px-8 text-white inline-block font-bold leading-5 bg-primary rounded-full"
-    href={`mailto:${email}`}
-    >Get in Touch</a
+    href={`mailto:${email}`}>Get in Touch</a
   >
 </div>

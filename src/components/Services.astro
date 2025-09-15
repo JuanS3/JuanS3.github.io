@@ -1,24 +1,54 @@
 ---
 import type { ServiceProps } from "@types";
 import Section from "./Section.astro";
+import { Image } from "astro:assets";
+
+import dataScienceIcon from "@assets/services/data-science.svg";
+import machineLearningIcon from "@assets/services/machine-learning.svg";
+import dataEngineeringIcon from "@assets/services/data-engineering.svg";
+import apiDevelopmentIcon from "@assets/services/api-development.svg";
+import aiConsultingIcon from "@assets/services/ai-consulting.svg";
+import biConsultingIcon from "@assets/services/bi-consulting.svg";
+import dashboardCreationIcon from "@assets/services/dashboard-creation.svg";
 
 interface Props {
-  services: ServiceProps[];
+  services: Omit<ServiceProps, "icon">[];
 }
 
 const { services } = Astro.props;
+
+const icons = [
+  dataScienceIcon,
+  machineLearningIcon,
+  dataEngineeringIcon,
+  apiDevelopmentIcon,
+  aiConsultingIcon,
+  biConsultingIcon,
+  dashboardCreationIcon,
+];
+
+const servicesWithIcons = services.map((item, index) => ({
+  ...item,
+  icon: icons[index],
+}));
 ---
 
 <Section text="Services" href="services">
   <div class="grid grid-cols-1 gap-6">
     {
-      services.map(({ title, description, icon, technologies }) => (
+      servicesWithIcons.map(({ title, description, icon, technologies }) => (
         <article class="rounded-xl border border-neutral/20 bg-black mb-15 transition-transform duration-300 hover:scale-[1.2] hover:z-10">
           <div class="relative z-[1] bg-[#1c232d]/85 bg-difu before:content-[''] before:rounded-2xl before:absolute before:z-[-1] before:opacity-[5%] before:inset-0 before:bg-[url(/raja.png)] before:bg-repeat before:bg-[length:128px] rounded-2xl p-6">
             <div class="flex items-start gap-4">
               <div class="block shrink-0">
                 <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-lg">
-                  <img src={icon} alt={title} class="w-8 h-8" />
+                  <Image
+                    src={icon}
+                    alt={title}
+                    class="w-8 h-8"
+                    width="32"
+                    height="32"
+                  />
                 </div>
               </div>
 

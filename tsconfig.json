@@ -3,24 +3,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@icons/*": [
-        "src/icons/*"
-      ],
-      "@types": [
-        "src/types/index.ts"
-      ],
-      "@config": [
-        "src/config/index.ts"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@icons/*": ["src/icons/*"],
+      "@types": ["src/types/index.ts"],
+      "@config": ["src/config/index.ts"],
+      "@styles/*": ["src/styles/*"],
+      "@assets/*": ["src/assets/*"]
     }
   }
 }

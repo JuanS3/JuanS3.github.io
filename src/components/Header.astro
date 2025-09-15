@@ -2,10 +2,11 @@
 import Menu from "@icons/Menu.astro";
 import { Image } from "astro:assets";
 import type { HeaderProps } from "@types";
+import siteLogoFile from "@assets/me/me.small.webp";
 
-type Props = HeaderProps;
+type Props = Omit<HeaderProps, "siteLogo">;
 
-const { siteLogo, navLinks } = Astro.props;
+const { navLinks } = Astro.props;
 ---
 
 <header
@@ -14,7 +15,7 @@ const { siteLogo, navLinks } = Astro.props;
   <a href="/" aria-label="Home link">
     <Image
       class="rounded-full"
-      src={siteLogo}
+      src={siteLogoFile}
       width="45"
       height="45"
       alt="website logo"

@@ -6,6 +6,7 @@ import "@fontsource-variable/gabarito";
 import "@styles/animations.css";
 import { SITE_CONFIG } from "@config";
 import Footer from "@components/Footer.astro";
+import socialImageFile from "@assets/me/me.webp";
 
 const {
   title,
@@ -15,11 +16,10 @@ const {
   lang,
   author,
   socialLinks,
-  socialImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = SITE_CONFIG;
 
-const ogImgUrl = canonicalURL + socialImage;
+const ogImgUrl = socialImageFile.src;
 ---
 
 <!doctype html>

@@ -8,16 +8,25 @@ import { SITE_CONFIG } from "@config";
 import Footer from "@components/Footer.astro";
 import socialImageFile from "@assets/me/me.webp";
 
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title: pageTitle, description: pageDescription } = Astro.props;
+
 const {
-  title,
-  description,
-  siteLogo,
+  title: siteTitle,
+  description: siteDescription,
   navLinks,
   lang,
   author,
   socialLinks,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = SITE_CONFIG;
+
+const title = pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle;
+const description = pageDescription ?? siteDescription.join(" ");
 
 const ogImgUrl = socialImageFile.src;
 ---
@@ -26,7 +35,7 @@ const ogImgUrl = socialImageFile.src;
 <html lang={lang} class="scroll-smooth scroll-pt-16">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description.join(" ")} />
+    <meta name="description" content={description} />
     <meta name="author" content={author} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -34,14 +43,14 @@ const ogImgUrl = socialImageFile.src;
     <title>{title}</title>
 
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description.join(" ")} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImgUrl} />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description.join(" ")} />
+    <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImgUrl} />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -49,7 +58,7 @@ const ogImgUrl = socialImageFile.src;
     <ClientRouter />
   </head>
   <body class="font-sans bg-gray-800">
-    <Header siteLogo={siteLogo} navLinks={navLinks} />
+    <Header navLinks={navLinks} />
     <main class="max-w-3xl px-5 mx-auto">
       <slot />
     </main>

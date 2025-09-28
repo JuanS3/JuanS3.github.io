@@ -17,6 +17,7 @@ export const SITE_CONFIG: SiteConfig = {
   author: name,
   description: summary,
   lang: "en",
+  siteLogo: "/favicon.png",
   navLinks: [
     { text: "Home", href: "/" },
     { text: "Experience", href: "/experience" },
@@ -83,6 +84,7 @@ export const SITE_CONTENT: SiteContent = {
           "AWS: CloudWatch",
         ],
       },
+      logo: "/experience/monokera.jpeg",
     },
     {
       company: "INTER",
@@ -113,6 +115,7 @@ export const SITE_CONTENT: SiteContent = {
           "NoSQL: MongoDB",
         ],
       },
+      logo: "/experience/inter.jpg",
     },
     {
       company: "Dentsu",
@@ -139,6 +142,7 @@ export const SITE_CONTENT: SiteContent = {
         "ETL Frameworks": ["Apache Spark", "Apache Airflow", "PySpark"],
         "Cloud Tools": ["AWS: S3", "AWS: Redshift", "AWS: EC2", "AWS: Lambda"],
       },
+      logo: "/experience/dentsu.jpeg",
     },
     {
       company: "HAVAS Media Group",
@@ -171,6 +175,7 @@ export const SITE_CONTENT: SiteContent = {
           "GCP: Dataproc",
         ],
       },
+      logo: "/experience/havas-media.jpg",
     },
     {
       company: "KLYM",
@@ -195,6 +200,7 @@ export const SITE_CONTENT: SiteContent = {
         "ETL Frameworks": ["Apache Spark", "Apache Airflow", "PySpark"],
         "Cloud Tools": ["AWS: S3", "AWS: Redshift", "AWS: EC2", "AWS: Lambda"],
       },
+      logo: "/experience/klym.jpg",
     },
     {
       company: "NTT Data",
@@ -245,6 +251,7 @@ export const SITE_CONTENT: SiteContent = {
           "MS Azure: Synapse Spark",
         ],
       },
+      logo: "/experience/ntt-data.jpg",
     },
     {
       company: "Universidad Autonoma de Zacatecas",
@@ -260,6 +267,7 @@ export const SITE_CONTENT: SiteContent = {
         Development: ["Python", "NoSQL", "Containers", "GNU/Linux", "Git"],
         "AI Tools": ["TensorFlow", "Keras", "Scikit-learn", "TensorFlow-Audio"],
       },
+      logo: "/experience/uzacatecas.jpg",
     },
     {
       company: "Rollup Consulting",
@@ -281,6 +289,7 @@ export const SITE_CONTENT: SiteContent = {
         ],
         Development: ["Python", "SQL", "Containers", "GNU/Linux", "Git"],
       },
+      logo: "/experience/rollup-consulting.jpg",
     },
     {
       company: "Rollup Consulting",
@@ -308,6 +317,7 @@ export const SITE_CONTENT: SiteContent = {
           "IBM Cognos Analytics",
         ],
       },
+      logo: "/experience/rollup-consulting.jpg",
     },
   ],
 
@@ -324,6 +334,7 @@ export const SITE_CONTENT: SiteContent = {
       dissertationLink: `#`,
 
       courses: null,
+      logo: "/education/unir.png",
     },
     {
       educationType: "Formal",
@@ -337,6 +348,7 @@ export const SITE_CONTENT: SiteContent = {
       dissertationLink: `https://repositorio.escuelaing.edu.co/handle/001/521`,
 
       courses: null,
+      logo: "/education/eci.png",
     },
     {
       educationType: "Formal",
@@ -350,6 +362,7 @@ export const SITE_CONTENT: SiteContent = {
       dissertationLink: null,
 
       courses: null,
+      logo: "/education/sena.svg",
     },
 
     {
@@ -373,6 +386,7 @@ export const SITE_CONTENT: SiteContent = {
           certificate: `#`,
         },
       ],
+      logo: "/education/google.webp",
     },
     {
       educationType: "Informal",
@@ -399,6 +413,7 @@ export const SITE_CONTENT: SiteContent = {
           certificate: `#`,
         },
       ],
+      logo: "/education/google.webp",
     },
     {
       educationType: "Informal",
@@ -437,6 +452,7 @@ export const SITE_CONTENT: SiteContent = {
           certificate: `#`,
         },
       ],
+      logo: "/education/meta.png",
     },
     {
       educationType: "Informal",
@@ -467,6 +483,7 @@ export const SITE_CONTENT: SiteContent = {
           certificate: `https://www.coursera.org/account/accomplishments/verify/8BCAET44S58K`,
         },
       ],
+      logo: "/education/uci.webp",
     },
     {
       educationType: "Informal",
@@ -493,6 +510,7 @@ export const SITE_CONTENT: SiteContent = {
           certificate: `https://www.coursera.org/account/accomplishments/verify/R7BB5VQC54JL`,
         },
       ],
+      logo: "/education/deeplearningai.png",
     },
     {
       educationType: "Informal",
@@ -539,6 +557,7 @@ export const SITE_CONTENT: SiteContent = {
           certificate: `https://courses.edx.org/certificates/0ea156f762a74462930d03d7a8379596`,
         },
       ],
+      logo: "/education/harvardx.png",
     },
   ],
 
@@ -651,6 +670,7 @@ export const SITE_CONTENT: SiteContent = {
         "A repository that contains a collection of custom functions for Power Query M, designed to streamline and optimize data transformation.",
       linkPreview: "https://github.com/JuanS3/PowerQueryM",
       linkSource: "https://github.com/JuanS3/PowerQueryM",
+      image: "/projects/pbiquery.png",
     },
   ],
   about: {
@@ -662,5 +682,6 @@ export const SITE_CONTENT: SiteContent = {
       `🤝 If you're looking for a thoughtful, reliable, and results-oriented data & AI engineer to help you turn ideas into impact — let’s connect.`,
     ],
     email: email,
+    image: "/me/me.webp",
   },
 };
